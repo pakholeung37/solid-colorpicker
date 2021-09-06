@@ -1,7 +1,7 @@
-import "windi.css";
-import { render } from "solid-js/web";
-import { Router } from "solid-app-router";
-import App from "./App";
+import "windi.css"
+import { render } from "solid-js/web"
+import { Router } from "solid-app-router"
+import App from "./App"
 
 render(
   () => (
@@ -9,5 +9,5 @@ render(
       <App />
     </Router>
   ),
-  document.getElementById("root")
-);
+  document.getElementById("root"),
+)
