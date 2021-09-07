@@ -12,7 +12,7 @@ interface SaturationProps {
 export const Saturation: Component<SaturationProps> = ({ hsv }) => {
   const [h = 35] = hsv
   return (
-    <div className="h-40 w-full relative overflow-hidden rounded-md border border-gray-500">
+    <div className="h-38 w-full relative overflow-hidden rounded-md border border-gray-500">
       <div
         className="w-full h-full absolute"
         style={`background: hsl(${h}, 100%, 50%)`}

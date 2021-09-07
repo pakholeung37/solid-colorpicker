@@ -20,18 +20,18 @@ export const ColorPicker: Component<ColorPickerProps> = ({
   const [h, s, v] = hsv
 
   return (
-    <div className="w-full space-y-1">
+    <div className="w-full space-y-2">
       <Saturation hsv={hsv} />
       <div className="flex h-6 w-full">
-        <div className="flex flex-col justify-between h-6 w-full my-1">
+        <div className="flex flex-col justify-between h-6 w-full">
           <Hue h={h} />
           <Alpha hsv={hsv} alpha={alpha} />
         </div>
-        <div className="h-full ml-2 my-1">
+        <div className="h-full ml-2">
           <CheckBoard hsv={hsv} alpha={alpha} />
         </div>
       </div>
-      <InputField />
+      <InputField hsv={hsv} alpha={alpha} />
     </div>
   )
 }

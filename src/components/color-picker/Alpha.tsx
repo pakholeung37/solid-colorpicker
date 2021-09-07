@@ -13,11 +13,11 @@ export const Alpha: Component<AlphaPorps> = ({ hsv }) => {
   const hsl = hsvToHsl(hsv)
   return (
     <div
-      className="rounded-full h-2.5 w-full border border-gray-500 relative overflow-hidden"
+      className="rounded-full h-2.5 w-full border border-gray-500 relative"
       style={`background: url("${transparentBgUrl}") left center`}
     >
       <div
-        className="w-full h-full"
+        className="w-full h-full rounded-full overflow-hidden"
         style={`background: linear-gradient(
               to right,
               ${compileColor.hsl([...hsl, 0])},

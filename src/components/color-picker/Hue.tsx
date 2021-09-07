@@ -8,16 +8,17 @@ export interface HuePorps {
 
 export const Hue: Component<HuePorps> = ({ h = 50 }) => {
   return (
-    <div
-      className="rounded-full h-2.5 w-full border border-gray-500 relative overflow-hidden"
-      style="background: linear-gradient(to right,
-    #f00 0%, #ff0 17%,
-    #0f0 33%,
-    #0ff 50%,
-    #00f 67%,
-    #f0f 83%,
-    #f00 100%);"
-    >
+    <div className="rounded-full h-2.5 w-full border border-gray-500 relative">
+      <div
+        className="w-full h-full rounded-full overflow-hidden"
+        style="background: linear-gradient(to right,
+          #f00 0%, #ff0 17%,
+          #0f0 33%,
+          #0ff 50%,
+          #00f 67%,
+          #f0f 83%,
+          #f00 100%);"
+      ></div>
       <Pointer x={5} y={3.5} />
     </div>
   )
