@@ -7,7 +7,7 @@ export interface CheckBoardProps {
   alpha: number
 }
 
-export const CheckBoard: Component<CheckBoardProps> = ({ hsv, alpha }) => {
+export const CheckBoard: Component<CheckBoardProps> = props => {
   return (
     <div
       className="w-6 h-6 rounded-full overflow-hidden"
@@ -18,8 +18,8 @@ export const CheckBoard: Component<CheckBoardProps> = ({ hsv, alpha }) => {
       <div
         className="h-full w-full"
         style={`background: ${compileColor.hsl([
-          ...hsvToHsl(hsv),
-          alpha / 100,
+          ...hsvToHsl(props.hsv),
+          props.alpha / 100,
         ])}`}
       ></div>
     </div>
