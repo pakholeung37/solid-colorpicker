@@ -1,4 +1,4 @@
-import { Component, createSignal } from "solid-js"
+import { Component, createEffect, createSignal } from "solid-js"
 import { Pointer } from "./Pointer"
 import { calculatePosition } from "./utils"
 
@@ -14,12 +14,20 @@ export const Hue: Component<HuePorps> = props => {
 
   const [x, setX] = createSignal(3)
 
+  createEffect(() => {
+    if (!rectCache) {
+      rectCache = container?.getClientRects()[0]
+    }
+    if (rectCache) {
+      const width = rectCache.width
+      setX((props.h / 360) * (width - 9) + 3)
+    }
+  })
+
   const handleChange = (e: MouseEvent) => {
     if (rectCache) {
       const result = calculatePosition(e, rectCache)
       const hue = Math.round((result.left / rectCache.width) * 360)
-      const width = rectCache.width
-      setX((props.h / 360) * (width - 9) + 3)
       props.onChange && props.onChange(hue)
     }
   }

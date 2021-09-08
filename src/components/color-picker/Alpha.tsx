@@ -1,5 +1,5 @@
 import { HSV } from "color-convert/conversions"
-import { Component, createMemo, createSignal } from "solid-js"
+import { Component, createEffect, createMemo, createSignal } from "solid-js"
 import { Pointer } from "./Pointer"
 import {
   calculatePosition,
@@ -21,12 +21,20 @@ export const Alpha: Component<AlphaPorps> = props => {
 
   const [x, setX] = createSignal(3)
 
+  createEffect(() => {
+    if (!rectCache) {
+      rectCache = container?.getClientRects()[0]
+    }
+    if (rectCache) {
+      const width = rectCache.width
+      setX((props.alpha / 100) * (width - 9) + 3)
+    }
+  })
+
   const handleChange = (e: MouseEvent) => {
     if (rectCache) {
       const result = calculatePosition(e, rectCache)
       const alpha = Math.round((result.left / rectCache.width) * 100)
-      const width = rectCache.width
-      setX((props.alpha / 100) * (width - 6) + 3)
       props.onChange && props.onChange(alpha)
     }
   }

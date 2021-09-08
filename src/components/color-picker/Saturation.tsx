@@ -34,6 +34,13 @@ export const Saturation: Component<SaturationProps> = props => {
     }
   }
 
+  createEffect(() => {
+    if (!rectCache) {
+      rectCache = container?.getClientRects()[0]
+    }
+    setPosition()
+  })
+
   const handleChange = (e: MouseEvent) => {
     if (rectCache) {
       const result = calculatePosition(e, rectCache)
@@ -41,7 +48,6 @@ export const Saturation: Component<SaturationProps> = props => {
       const [h] = props.hsv
       const _s = (result.left / containerWidth) * 100
       const _v = (1 - result.top / containerHeight) * 100
-      setPosition()
       props.onChange && props.onChange([h, _s, _v])
     }
   }

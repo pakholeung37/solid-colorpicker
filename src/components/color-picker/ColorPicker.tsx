@@ -23,9 +23,8 @@ export const ColorPicker: Component<ColorPickerProps> = ({
   const [alpha, setAlpha] = createSignal(defaultAlpha)
 
   const handleChange = (_hsv: HSV | undefined, _alpha: number | undefined) => {
-    console.log(_hsv, _alpha)
-    _hsv && setHSV(_hsv)
-    _alpha && setAlpha(_alpha)
+    !isUndefined(_hsv) && setHSV(_hsv)
+    !isUndefined(_alpha) && setAlpha(_alpha)
     onChange &&
       onChange(
         isUndefined(_hsv) ? hsv() : _hsv,
